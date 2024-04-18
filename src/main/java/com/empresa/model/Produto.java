@@ -2,34 +2,27 @@ package com.empresa.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.List;
+
 @Entity
-@Table(name = "produto")
-public class Produto {
+@Table(name = "TB_PRODUTO")
+public class Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //define como auto incremento
     @Id
-    private Integer id;
+    private Long id;
     private String descricao;
-    private double valor;
+    private BigDecimal valor;
 
-    public Produto() {
-    }
+    @OneToMany(mappedBy = "produto")
+    private List<ItemVenda> itemVenda;
 
-    public Produto(String descricao, double valor) {
-        this.descricao = descricao;
-        this.valor = valor;
-    }
-
-    public Produto(Integer id, String descricao, double valor) {
-        this.id = id;
-        this.descricao = descricao;
-        this.valor = valor;
-    }
-
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -41,7 +34,7 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
@@ -54,7 +47,7 @@ public class Produto {
                 '}';
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 }

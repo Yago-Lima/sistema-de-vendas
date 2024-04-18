@@ -17,7 +17,7 @@ public class ProdutoRepository {
     public void save(Produto produto) {
         em.persist(produto);
     }
-    public Produto produto(Integer id) {
+    public Produto produto(Long id) {
         return em.find(Produto.class,id);
     }
 
@@ -26,7 +26,7 @@ public class ProdutoRepository {
         return query.getResultList();
     }
 
-    public void remove(Integer id) {
+    public void remove(Long id) {
         Produto produto = em.find(Produto.class, id);
         em.remove(produto);
     }

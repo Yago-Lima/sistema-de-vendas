@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="fragments/layout::layout(~{::head}, ~{::body})" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>TODO supply a title</title>
     <meta charset="UTF-8">
@@ -11,9 +11,10 @@
     <tr>
         <th>Id</th>
         <th>Descrição</th>
+        <th>Preço/u</th>
     </tr>
     </thead>
-    <tr th:each="produto : ${Produtos}">
+    <tr th:each="produto : ${produtos}">
         <td th:text="${produto.id}"> </td>
         <td th:text="${produto.descricao}"> </td>
         <td th:text="${produto.valor}"> </td>
@@ -21,7 +22,5 @@
         <td> <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"  th:href="@{/produtos/remove/{id}(id=${produto.id})}">Excluir</a> </td>
     </tr>
 </table>
-<button onclick="window.location.href='/produtos/form'">Inserir Produto</button>
-
 </body>
 </html>

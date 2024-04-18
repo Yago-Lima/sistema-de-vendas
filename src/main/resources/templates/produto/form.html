@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html th:replace="fragments/layout::layout(~{::head}, ~{::body})" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>TODO supply a title</title>
     <meta charset="UTF-8">
@@ -15,6 +15,5 @@
     <input type="text" th:field="*{valor}" placeholder="valor">
     <input type="submit" value="Enviar">
 </form>
-<button onclick="window.location.href='/produtos/list'">Voltar</button>
 </body>
 </html>

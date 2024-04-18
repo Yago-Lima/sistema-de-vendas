@@ -23,13 +23,13 @@ public class ProdutoController {
 
     @GetMapping("/list")
     public ModelAndView listar(ModelMap model) {
-        model.addAttribute("Produtos", dao.produtoList());
+        model.addAttribute("produtos", dao.produtoList());
         return new ModelAndView("produto/list", model);
     }
 
 
     @GetMapping("/edit/{id}")
-    public ModelAndView edit(@PathVariable("id") Integer id, ModelMap model) {
+    public ModelAndView edit(@PathVariable("id") Long id, ModelMap model) {
         model.addAttribute("produto", dao.produto(id));
         return new ModelAndView("produto/form", model);
     }
@@ -48,7 +48,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/remove/{id}")
-    public ModelAndView remove(@PathVariable("id") Integer id) {
+    public ModelAndView remove(@PathVariable("id") Long id) {
         dao.remove(id);
         return new ModelAndView("redirect:/produtos/list");
     }

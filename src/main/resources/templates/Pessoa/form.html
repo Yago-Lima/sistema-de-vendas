@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html th:replace="fragments/layout::layout(~{::head}, ~{::body})" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>FORM</h1>
+<form th:action="|${pessoa.id == null} ? /${pessoa.nomeClasse()}/save : /${pessoa.nomeClasse()}/update|"
+      th:object="${pessoa}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <input type="text" th:if="${pessoa.tipoObjeto('pessoaFisica')}" th:field="*{nome}"  placeholder="Nome">
+    <input type="text" th:if="${pessoa.tipoObjeto('pessoaJuridica')}" th:field="*{nomeFantasia}"  placeholder="Razão Social">
+    <input type="text" th:if="${pessoa.tipoObjeto('pessoaFisica')}" th:field="*{cpf}"  placeholder="cpf">
+    <input type="text" th:if="${pessoa.tipoObjeto('pessoaJuridica')}" th:field="*{cnpj}"  placeholder="cpnj">
+    <input type="text" th:if="${pessoa.tipoObjeto('pessoaFisica')}" th:field="*{rg}"  placeholder="rg">
+
+    <input type="text" th:field="*{telefone}"  placeholder="telefone">
+    <input type="text"  th:field="*{endereco}"  placeholder="endereço">
+    <input type="submit" value="Enviar">
+</form>
+
+</body>
+</html>
